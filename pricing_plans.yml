@@ -1,0 +1,37 @@
+# =============================================================
+# Pricing Plans Reference
+# These plans are defined in Provider Studio when creating
+# a Marketplace listing. They cannot be created via SQL.
+# This file is for reference/documentation only.
+# =============================================================
+
+plans:
+  - name: STANDARD
+    display_name: "Standard"
+    description: "Basic access - Bronze tier features"
+    type: FREE
+    features:
+      - "Bronze cup access"
+    purchase_attributes:
+      plan_name: "STANDARD"
+
+  - name: PREMIUM
+    display_name: "Premium"
+    description: "Enhanced access - Silver tier features"
+    type: FREE
+    features:
+      - "Bronze cup access"
+      - "Silver cup access"
+    purchase_attributes:
+      plan_name: "PREMIUM"
+
+  - name: ENTERPRISE
+    display_name: "Enterprise"
+    description: "Full access - Gold tier features"
+    type: FREE
+    features:
+      - "Bronze cup access"
+      - "Silver cup access"
+      - "Gold cup access"
+    purchase_attributes:
+      plan_name: "ENTERPRISE"

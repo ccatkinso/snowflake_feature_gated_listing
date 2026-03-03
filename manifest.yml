@@ -1,0 +1,10 @@
+manifest_version: 1
+
+version:
+  name: v1
+  label: "Version 1.0"
+  comment: "GatedPlans Example - Feature gating demo with pricing plans"
+
+artifacts:
+  setup_script: setup_script.sql
+  default_streamlit: gated_plans_app.gated_plans_dashboard
