@@ -151,48 +151,6 @@ ALTER APPLICATION "GatedPlans Example" UPGRADE
   USING '@GATEDPLANS_STAGING.STAGE_CONTENT.APP_CODE';
 ```
 
-## Git Repository Integration
-
-To connect this project to a Git repo and deploy from source control:
-
-### 1. Create a Secret for Git Authentication
-
-```sql
-CREATE SECRET my_git_secret
-  TYPE = PASSWORD
-  USERNAME = 'your-git-username'
-  SECRET_STRING = 'your-personal-access-token';
-```
-
-### 2. Create an API Integration
-
-```sql
-CREATE API INTEGRATION my_git_api_integration
-  API_PROVIDER = GIT_HTTPS_API
-  API_ALLOWED_PREFIXES = ('https://github.com/your-org')
-  ALLOWED_AUTHENTICATION_SECRETS = (my_git_secret)
-  ENABLED = TRUE;
-```
-
-### 3. Create the Git Repository Object
-
-```sql
-CREATE GIT REPOSITORY my_gatedplans_repo
-  API_INTEGRATION = my_git_api_integration
-  GIT_CREDENTIALS = my_git_secret
-  ORIGIN = 'https://github.com/your-org/gatedplans-example.git';
-```
-
-### 4. Deploy from Git
-
-```sql
-ALTER GIT REPOSITORY my_gatedplans_repo FETCH;
-
-ALTER APPLICATION PACKAGE GATEDPLANS_EXAMPLE_PKG
-  REGISTER VERSION v2
-  USING '@my_gatedplans_repo/branches/main/';
-```
-
 ## Configuring Marketplace Pricing Plans
 
 Pricing plans are configured in **Provider Studio** (not via SQL) when creating a Marketplace listing. The `pricing_plans.yml` file in this project documents the plan structure for reference.
